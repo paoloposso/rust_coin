@@ -1,0 +1,18 @@
+[package]
+name = "rust_coin"
+version = "0.1.0"
+authors = ["Paolo Posso <pvictorsys@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+crypto-hash = "0.3.4"
+
+# [lib]
+# name = "rustcointlib"
+# path = "src/lib.rs"
+
+# [[bin]]
+# name = "rust_coin"
+# path = "src/main.rs"
