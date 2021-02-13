@@ -6,17 +6,38 @@ pub struct Block {
     pub timestamp: u64,
     pub hash: String,
     pub pre_hash: String,
-    pub transaction: Vec<Transaction>
+    pub transaction: Vec<Transaction>,
+    pub nonce: u64
 }
 
 impl Block {
-    pub fn new(pre_hash: String, transaction: Vec<Transaction>) -> Self {  
-        let time = now();      
+    pub fn new(transaction: Vec<Transaction>) -> Self {  
+        let time = now();
+        let empty_string = String::new();  
+        let nonce = 0u64;
         Block {
-            hash: calculate_hash(&pre_hash, &transaction, time).to_owned(),
+            hash: empty_string.clone(),
             timestamp: time,
-            pre_hash,
-            transaction
+            pre_hash: empty_string.clone(),
+            transaction,
+            nonce
         }
+    }
+
+    pub fn set_pre_hash(&mut self, pre_hash: String) {
+        self.pre_hash = pre_hash;
+    }
+
+    pub fn set_hash(&mut self) {
+        self.hash = calculate_hash(&self.pre_hash, &self.transaction, &self.timestamp, &self.nonce);
+    }
+
+    pub fn mine(&mut self) {
+        let target = get_difficult_string();
+        while &self.hash[..DIFFICULT_LEVEL as usize] != target {
+            self.nonce += 1;
+            self.hash = calculate_hash(&self.pre_hash, &self.transaction, &self.timestamp, &self.nonce);
+        }
+        println!("Block mined!");
     }
 }
