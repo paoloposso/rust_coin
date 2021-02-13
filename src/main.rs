@@ -1,9 +1,12 @@
-use std::vec;
+// use std::vec;
 
 use rustcointlib::*;
 
 mod block_chain;
 use block_chain::Blockchain;
+use ed25519_dalek::Keypair;
+
+mod wallet;
 
 fn main() {
     // let first_block = Block::new("0".to_owned(), vec![Transaction {
@@ -23,30 +26,32 @@ fn main() {
     // println!("{:#?}", sec_block);
     // println!("{:#?}", first_block);
 
-    let mut blockchain = Blockchain::new();
-    let genesis_block = Block::new(vec![Transaction {
-        amount:2000.0,
-        sender: String::from("Ryan"),
-        receiver: String::from("Dan"),
-    }]);
-    let first_block = Block::new(vec![Transaction {
-        amount:1000.0,
-        sender: String::from("Paolo"),
-        receiver: String::from("Jorge"),
-    }]);
-    let second_block = Block::new(vec![Transaction {
-        amount:1000.0,
-        sender: String::from("Thayna"),
-        receiver: String::from("Paolo"),
-    }]);
+    // let mut blockchain = Blockchain::new();
+    // let genesis_block = Block::new(vec![Transaction {
+    //     amount:2000.0,
+    //     sender: String::from("Ryan"),
+    //     receiver: String::from("Dan"),
+    // }]);
+    // let first_block = Block::new(vec![Transaction {
+    //     amount:1000.0,
+    //     sender: String::from("Paolo"),
+    //     receiver: String::from("Jorge"),
+    // }]);
+    // let second_block = Block::new(vec![Transaction {
+    //     amount:1000.0,
+    //     sender: String::from("Thayna"),
+    //     receiver: String::from("Paolo"),
+    // }]);
 
-    blockchain.add_block(genesis_block);
-    blockchain.add_block(first_block);
-    blockchain.add_block(second_block);
+    // let mut blockchain = Blockchain::new();
+    // blockchain.add_new_transaction(Transaction {sender: String::from("Paolo"), receiver: String::from("Victor"), amount: 1000.0});
+    // blockchain.add_new_transaction(Transaction {sender: String::from("Jorge"), receiver: String::from("Paolo"), amount: 1000.0});
+    // blockchain.add_new_transaction(Transaction {sender: String::from("Thayna"), receiver: String::from("Paolo"), amount: 1000.0});
 
-    println!("{:#?}", blockchain);
-    
-    let valid = blockchain.is_valid_chain();
+    // blockchain.mine_unmined_transactions("First Miner".to_owned());
 
-    println!("Valid: {}", valid);
+    // println!("{:#?}", blockchain);
+    // println!("Valid: {}", blockchain.is_valid_chain());
+
+
 }
