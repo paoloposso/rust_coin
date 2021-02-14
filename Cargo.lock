@@ -285,7 +285,6 @@ dependencies = [
  "crypto-hash",
  "ed25519-dalek",
  "rand",
- "sha2",
 ]
 
 [[package]]

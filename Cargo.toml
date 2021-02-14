@@ -10,7 +10,6 @@ edition = "2018"
 crypto-hash = "0.3.4"
 rand = "0.7.0"
 ed25519-dalek = "1.0.1"
-sha2 = "0.9.3"
 
 [lib]
 name = "rustcointlib"
